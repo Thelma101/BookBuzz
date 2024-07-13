@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const joi = require('joi');
 
 const bookRoutes = require('./bookRoutes/bookRoute');
-const authRoutes = require('./authRoutes/authRoute');
+const authRoutes = require('./bookRoutes/authRoute');
 
 
 // mongoose.connect('mongodb://localhost/bookDB', 

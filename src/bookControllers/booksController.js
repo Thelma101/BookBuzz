@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const books = require('../database/booksData.json');
+const books = require('../model/booksData.json');
 const Joi = require('joi');
 
 app.use(express.json());
