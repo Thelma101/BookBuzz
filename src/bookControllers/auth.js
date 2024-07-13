@@ -6,14 +6,16 @@ const books = require('../database/booksData.json')
 app.use(express.json());
 // register login
 
-const register = async (req, res, next) => {
-    try {
-        const { email, password, name } = req.body;
-        const newUser = await user.create({ email, password, name });
-        res.status(201).json(newUser);
+const auth = async (req, res) => {
+    const register = async (req, res, next) => {
+        try {
+            const { email, password, name } = req.body;
+            const newUser = await user.create({ email, password, name });
+            res.status(201).json(newUser);
 
-    } catch (error) {
-        console.error(error);
+        } catch (error) {
+            console.error(error);
+        }
     }
     // joi validation error
 
@@ -47,7 +49,7 @@ const register = async (req, res, next) => {
     const deleteUser = async (req, res) => {
         try {
             const { id } = req.params;
-                await user.findByIdAndDelete(id);
+            await user.findByIdAndDelete(id);
             res.status(204).json();
         } catch (error) {
             console.error(error);

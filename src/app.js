@@ -5,8 +5,8 @@ const swaggerjsDoc = require('swagger-jsdoc');
 const mongoose = require('mongoose');
 const joi = require('joi');
 
-const bookRoutes = require('./routes/bookRoutes');
-const authRoutes = require('./routes/authRoute');
+const bookRoutes = require('./bookRoutes/bookRoute');
+const authRoutes = require('./authRoutes/authRoute');
 
 
 // mongoose.connect('mongodb://localhost/bookDB', 
