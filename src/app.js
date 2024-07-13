@@ -5,21 +5,21 @@ const swaggerjsDoc = require('swagger-jsdoc');
 const mongoose = require('mongoose');
 const joi = require('joi');
 
-mongoose.connect('mongodb://localhost/bookDB', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost/bookDB', 
+    { useNewUrlParser: true, useUnifiedTopology: true }
+)
    .then(() => console.log('Connected to MongoDB'))
    .catch(err => console.error(err));
 
-const bookSchema = new mongoose.Schema({
-    title: { type: String, required: true },
-    author: { type: String, required: true },
-    genre: { type: String, required: true },
-    published: { type: Date, required: true },
-    description: { type: String },
-    ratings_count: { type: Number, default: 0 },
-    reviews_count: { type: Number, default: 0 },
-});
-
-const Book = mongoose.model('Book', bookSchema);
+// const bookSchema = new mongoose.Schema({
+//     title: { type: String, required: true },
+//     author: { type: String, required: true },
+//     genre: { type: String, required: true },
+//     published: { type: Date, required: true },
+//     description: { type: String },
+//     ratings_count: { type: Number, default: 0 },
+//     reviews_count: { type: Number, default: 0 },
+// });
 
 app.use('/', bookRoutes);
 
