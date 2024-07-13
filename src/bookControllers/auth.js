@@ -55,3 +55,5 @@ const register = async (req, res, next) => {
         }
     }
 }
+
+module.exports = { register, login, updateUser, deleteUser };
