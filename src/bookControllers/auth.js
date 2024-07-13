@@ -44,11 +44,14 @@ const register = async (req, res, next) => {
         }
     }
 
-    const deleteUser = async(req, res) => {
+    const deleteUser = async (req, res) => {
         try {
-            const { id } = req.params;[
-            await user.findByIdAndDelete(id);
+            const { id } = req.params;
+                await user.findByIdAndDelete(id);
             res.status(204).json();
-
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Internal server error' });
         }
     }
+}
