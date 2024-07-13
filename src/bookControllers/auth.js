@@ -19,7 +19,6 @@ const auth = async (req, res) => {
     }
     // joi validation error
 
-
     const login = async (req, res, next) => {
         try {
             const { email, password } = req.body;
@@ -58,4 +57,4 @@ const auth = async (req, res) => {
     }
 }
 
-module.exports = { register, login, updateUser, deleteUser };
+module.exports = { auth };

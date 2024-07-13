@@ -1,5 +1,6 @@
 const express = require('express');
-const { register, login, updateUser, deleteUser } = require('../bookControllers/auth')
+// const { register, login, updateUser, deleteUser } = require('../bookControllers/auth')
+const { auth } = require('../bookControllers/auth');
 router = express.Router();
 
 // router.use(json())

@@ -1,13 +1,11 @@
-// bookroutes
 const express = require('express');
 const router = express.Router();
-const book = require('../bookControllers/booksController')
+const { bookController } = require('../bookControllers/booksController');
 
-
-// router.get('/books/:id', (req, res) => res.send(books.find(book => book.id === req.params.id)));
-router.get('/books:id', book);
-router.post('/books', book);
-router.put('/books/:id', book);
-router.delete('/books/:id', book);
+router.get('/books', bookController.getAllBooks);
+router.post('/books', bookController.createBook);
+router.get('/books/:id', bookController.getBookById);
+router.put('/books/:id', bookController.updateBook);
+router.delete('/books/:id', bookController.deleteBook);
 
 module.exports = router;
