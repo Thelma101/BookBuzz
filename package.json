@@ -1,0 +1,16 @@
+{
+  "name": "bookbuzz",
+  "version": "1.0.0",
+  "description": "Discover, browse, and manage your book collection. Find new authors, search for titles, and keep track of your reading list.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  }
+}
