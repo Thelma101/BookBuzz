@@ -42,7 +42,7 @@ const options = {
             },
         ],
     },
-    apis: ['./src/routes/bookRoutes.js'],
+    apis: ['./bookRoutes/.js'],
 };
 
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerjsDoc(options)));
