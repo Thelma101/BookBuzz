@@ -9,11 +9,11 @@ const bookRoutes = require('./routes/bookRoutes');
 const authRoutes = require('./routes/authRoute');
 
 
-mongoose.connect('mongodb://localhost/bookDB', 
-    { useNewUrlParser: true, useUnifiedTopology: true }
-)
-   .then(() => console.log('Connected to MongoDB'))
-   .catch(err => console.error(err));
+// mongoose.connect('mongodb://localhost/bookDB', 
+//     { useNewUrlParser: true, useUnifiedTopology: true }
+// )
+//    .then(() => console.log('Connected to MongoDB'))
+//    .catch(err => console.error(err));
 
 // const bookSchema = new mongoose.Schema({
 //     title: { type: String, required: true },
@@ -25,7 +25,8 @@ mongoose.connect('mongodb://localhost/bookDB',
 //     reviews_count: { type: Number, default: 0 },
 // });
 
-app.use('/', bookRoutes);
+app.use('/book', bookRoutes);
+app.use('/auth', authRoutes);
 
 const options = {
     definition: {
