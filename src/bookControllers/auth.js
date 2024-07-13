@@ -1,19 +1,33 @@
-// authentication
-app.use(express.json());
-const jwt = require('jsonwebtoken');
-const { secret } = require('./config');
+const express = require('express');
+const app = express();
 
-app.use((req, res, next) => {
-    const token = req.headers['authorization']?.split(' ')[1];
-    if (token) {
-        jwt.verify(token, secret, (err, user) => {
-            if (err) {
-                return res.status(403).send('Invalid token');
-            }
-            req.user = user;
-            next();
-        });
-    } else {
-        res.status(401).send('Unauthorized');
+
+
+app.use(express.json());
+// register login
+
+const register = async (req, res, next) => {
+    try {
+        const { email, password, name } = req.body;
+        const newUser = await user.create({ email, password, name });
+        res.status(201).json(newUser);
+
+    } catch (error) {
+        console.error(error);
     }
-});
+// joi validation error
+    
+
+const login = async (req, res, next) => {
+    try {
+        const { email, password } = req.body;
+        const user = await user.findOne({ email });
+
+        if (!user ||!(await user.comparePassword(password))) {
+            return res.status(401).json({ error: 'Invalid email or password' });
+        }
+
+    } catch (error) {
+        console.error(error);
+    }
+}
