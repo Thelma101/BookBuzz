@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+app.use(express.json());
 const swaggerUI = require('swagger-ui-express');
 const swaggerjsDoc = require('swagger-jsdoc');
 const mongoose = require('mongoose');
@@ -11,11 +12,10 @@ app.use('/book', bookRoutes);
 app.use('/auth', authRoutes);
 
 
-// mongoose.connect('mongodb://localhost/bookDB', 
-//     { useNewUrlParser: true, useUnifiedTopology: true }
-// )
-//    .then(() => console.log('Connected to MongoDB'))
-//    .catch(err => console.error(err));
+mongoose.connect('mongodb+srv://coursequesthub:fePziw-bewbaz-5cofme@cluster0.lssixvh.mongodb.net/BookBuzz'
+)
+   .then(() => console.log('Connected to MongoDB'))
+   .catch(err => console.error(err));
 
 // const bookSchema = new mongoose.Schema({
 //     title: { type: String, required: true },
@@ -39,7 +39,7 @@ const options = {
         },
         servers: [
             {
-                url: 'http://localhost:3000',
+                url: 'http://localhost:3001',
             },
         ],
     },
