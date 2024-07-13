@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+
 // const user = require('../model/booksData.json')
 const user = require('../model/user.model')
 
@@ -13,7 +14,7 @@ const register = async (req, res) => {
   }
 };
 
-const login = async (req, res, next) => {
+const login = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await user.findOne({ email });

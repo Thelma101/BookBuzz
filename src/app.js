@@ -7,6 +7,8 @@ const joi = require('joi');
 
 const bookRoutes = require('./bookRoutes/bookRoute');
 const authRoutes = require('./bookRoutes/authRoute');
+app.use('/book', bookRoutes);
+app.use('/auth', authRoutes);
 
 
 // mongoose.connect('mongodb://localhost/bookDB', 
@@ -25,8 +27,7 @@ const authRoutes = require('./bookRoutes/authRoute');
 //     reviews_count: { type: Number, default: 0 },
 // });
 
-app.use('/book', bookRoutes);
-app.use('/auth', authRoutes);
+
 
 const options = {
     definition: {
