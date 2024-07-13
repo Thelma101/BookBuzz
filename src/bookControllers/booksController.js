@@ -5,48 +5,87 @@ const books = require('../database/booksData.json');
 app.use(express.json());
 
 const bookController = {
-    async createBook (req, res) {
-        // Create a new book
-        const newBook = req.body;
-        res.json({ id: books.length + 1, 
-            title: newBook.title, 
-            author: newBook.author });
-    }
-    async getBookById(req, res) {
-        const bookId = req.params.id;
-        const book = books.find((book) => book.id === parseInt(bookId));
-        if (!book) {
-          res.status(404).json({ message: `Book not found` });
-        } else {
-          res.json(book);
+    async getAllBooks(req, res) {
+        try {
+            res.json(books);
+        } catch (error) {
+            console.error(error.message);
+            res.status(500).json({ error: 'Error fetching books' });
         }
+    },
 
-        
-        app.get('/books/:id', (req, res) => {
-            // Return a single book by ID
-            const bookId = req.params.id;
-            res.json({
-                id: bookId, title: `Book ${bookId}`, author: `Author ${bookId}`
-            });
-        });
+    async createBook(req, res) {
+        try {
+            const { title, author, genre, published, description, ratings_count, reviews_count } = req.body;
+            const newBook = {
+                id: books.length + 1,
+                title,
+                author,
+                genre,
+                published,
+                description,
+                ratings_count,
+                reviews_count
+            };
+            books.push(newBook);
+            res.status(201).json(newBook);
+        } catch (error) {
+            console.error(error.message);
+            res.status(500).json({ error: 'Error creating book' });
+        }
+    },
 
-app.post('/books', (req, res) => {
-    // Create a new book
-    const book = req.body;
-    res.json({ id: 3, title: book.title, author: book.author });
-});
+    async getBookById(req, res) {
+        try {
+            const id = parseInt(req.params.id);
+            const book = books.find((book) => book.id === id);
+            if (!book) {
+                res.status(404).json({ error: 'Book not found' });
+            } else {
+                res.json(book);
+            }
+        } catch (error) {
+            console.error(error.message);
+            res.status(500).json({ error: 'Error fetching book' });
+        }
+    },
 
-app.put('/books/:id', (req, res) => {
-    // Update a book
-    const bookId = req.params.id;
-    const book = req.body;
-    res.json({ id: bookId, title: book.title, author: book.author });
-});
+    async updateBook(req, res) {
+        try {
+            const id = parseInt(req.params.id);
+            const book = books.find((book) => book.id === id);
+            if (!book) {
+                res.status(404).json({ error: 'Book not found' });
+            } else {
+                const { title, author, genre, published, description, ratings_count, reviews_count } = req.body;
+                book.title = title;
+                book.author = author;
+                book.genre = genre;
+                book.published = published;
+                book.description = description;
+                book.ratings_count = ratings_count;
+                book.reviews_count = reviews_count;
+                res.json(book);
+            }
+        } catch (error) {
+            console.error(error.message);
+            res.status(500).json({ error: 'Error updating book' });
+        }
+    },
 
-app.delete('/books/:id', (req, res) => {
-    // Delete a book
-    const bookId = req.params.id;
-    res.json({ message: `Book ${bookId} deleted` });
-});
-    
-}
+    async deleteBook(req, res) {
+        try {
+            const id = parseInt(req.params.id);
+            const index = books.findIndex((book) => book.id === id);
+            if (index === -1) {
+                res.status(404).json({ error: 'Book not found' });
+            } else {
+                books.splice(index, 1);
+                res.json({ message: 'Book deleted successfully' });
+            }
+        } catch (error) {
+            console.error(error.message);
+            res.status(500).json({ error: 'Error deleting book' });
+        }
+    }
+};
