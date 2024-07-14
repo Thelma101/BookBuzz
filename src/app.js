@@ -14,7 +14,7 @@ app.use('/auth', authRoutes);
       .then(() => console.log('Connected to MongoDB'))
       .catch(err => console.error(err));
 
-      
+
 //    Swagger
 const swaggerUI = require('swagger-ui-express');
 const swaggerjsDoc = require('swagger-jsdoc');
