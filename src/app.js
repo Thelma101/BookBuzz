@@ -10,11 +10,11 @@ app.use('/book', bookRoutes);
 app.use('/auth', authRoutes);
 
 // Database
-mongoose.connect('mongodb+srv://coursequesthub:fePziw-bewbaz-5cofme@cluster0.lssixvh.mongodb.net/BookBuzz/?retryWrites=true&w=majority'
-)
-    .then(() => console.log('Connected to MongoDB'))
-    .catch(err => console.error(err));
+ mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`)
+      .then(() => console.log('Connected to MongoDB'))
+      .catch(err => console.error(err));
 
+      
 //    Swagger
 const swaggerUI = require('swagger-ui-express');
 const swaggerjsDoc = require('swagger-jsdoc');
