@@ -1,8 +1,6 @@
 const express = require('express');
 const app = express();
 app.use(express.json());
-const swaggerUI = require('swagger-ui-express');
-const swaggerjsDoc = require('swagger-jsdoc');
 const mongoose = require('mongoose');
 const joi = require('joi');
 
@@ -11,12 +9,15 @@ const authRoutes = require('./bookRoutes/authRoute');
 app.use('/book', bookRoutes);
 app.use('/auth', authRoutes);
 
-
+// Database
 mongoose.connect('mongodb+srv://coursequesthub:fePziw-bewbaz-5cofme@cluster0.lssixvh.mongodb.net/BookBuzz/?retryWrites=true&w=majority'
 )
-   .then(() => console.log('Connected to MongoDB'))
-   .catch(err => console.error(err));
+    .then(() => console.log('Connected to MongoDB'))
+    .catch(err => console.error(err));
 
+//    Swagger
+const swaggerUI = require('swagger-ui-express');
+const swaggerjsDoc = require('swagger-jsdoc');
 
 const options = {
     definition: {
@@ -28,7 +29,7 @@ const options = {
         },
         servers: [
             {
-                url: 'http://localhost:3001', 
+                url: 'http://localhost:3001',
             },
         ],
     },
