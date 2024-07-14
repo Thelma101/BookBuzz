@@ -3,7 +3,7 @@ const app = express();
 app.use(express.json());
 const mongoose = require('mongoose');
 const joi = require('joi');
-const swaggerDocs = require('swaggerBooks.js');
+const swaggerDocs = require('./bookRoutes/swaggerDocs.json');
   require('dotenv').config();
 
 const bookRoutes = require('./bookRoutes/bookRoute');
@@ -22,7 +22,7 @@ const swaggerUI = require('swagger-ui-express');
 const swaggerjsDoc = require('swagger-jsdoc');
 
 
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerjsDoc(options)));
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 
 
