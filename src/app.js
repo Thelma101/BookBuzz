@@ -12,7 +12,7 @@ app.use('/book', bookRoutes);
 app.use('/auth', authRoutes);
 
 
-mongoose.connect('mongodb+srv://coursequesthub:fePziw-bewbaz-5cofme@cluster0.lssixvh.mongodb.net/BookBuzz'
+mongoose.connect('mongodb+srv://coursequesthub:fePziw-bewbaz-5cofme@cluster0.lssixvh.mongodb.net/BookBuzz/Users'
 )
    .then(() => console.log('Connected to MongoDB'))
    .catch(err => console.error(err));
