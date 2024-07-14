@@ -1,8 +1,10 @@
+
 const express = require('express');
 const app = express();
 
 // const user = require('../model/booksData.json')
-const user = require('../model/user.model')
+const user = require('../model/user.model');
+const { joi } = require('joi')
 
 const register = async (req, res) => {
   try {

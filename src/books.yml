@@ -1,0 +1,136 @@
+swagger: "2.0"
+info:
+  title: My API
+  description: Book Buzz API
+  version: 1.0.0
+host: localhost:3001
+basePath: /
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /users:
+    get:
+      summary: Get all users
+      responses:
+        200:
+          description: List of users
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+        500:
+          description: Internal Server Error
+  /users/{id}:
+    get:
+      summary: Get a user by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+      responses:
+        200:
+          description: User found
+          schema:
+            $ref: '#/definitions/User'
+        404:
+          description: User not found
+definitions:
+  User:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      email:
+        type: string
+
+# @swagger
+#   swagger: '2.0'
+#   info:
+#     version: 1.0.0
+#     title: Books API
+#   paths:
+#     /books:
+#       get:
+#         summary: Returns a list of books
+#         responses:
+#           '200':
+#             description: A list of books
+#             schema:
+#               type: array
+#               items:
+#                 $ref: '#/definitions/Book'
+#     /books/{id}:
+#       get:
+#         summary: Returns a book
+#         parameters:
+#           - name: id
+#             in: path
+#             description: ID of the book to return
+#             required: true
+#             type: integer
+#         responses:
+#           '200':
+#             description: A book
+#             schema:
+#               $ref: '#/definitions/Book'
+#           '404':
+#             description: Book not found
+#           '500':
+#             description: Internal server error
+#     /books/{id}/authors:
+#       get:
+#         summary: Returns a list of authors of a book
+#         parameters:
+#           - name: id
+#             in: path
+#             description: ID of the book to return
+#             required: true
+#             type: integer
+#         responses:
+#           '200':
+#             description: A list of authors
+#             schema:
+#               type: array
+#               items:
+#                 $ref: '#/definitions/Author'
+#           '404':
+#             description: Book not found
+#           '500':
+#             description: Internal server error
+#   definitions:
+#     Book:
+#       type: object
+#       properties:
+#         id:
+#           type: integer
+#         title:
+#           type: string
+#         author:
+#           type: string
+#     Author:
+#       type: object
+#       properties:
+#         id:
+#           type: integer
+#         name:
+#           type: string
+#   host: localhost:3001
+#   basePath: /api
+#   schemes:
+#     - http
+#   consumes:
+#     - application/json
+#   produces:
+#     - application/json
+#   securityDefinitions:
+#     basicAuth:
+#       type: basic
+#   security:
+#     - basicAuth: []
