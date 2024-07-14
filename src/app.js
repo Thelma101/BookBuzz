@@ -4,6 +4,8 @@ app.use(express.json());
 const mongoose = require('mongoose');
 const joi = require('joi');
 
+  require('dotenv').config();
+
 const bookRoutes = require('./bookRoutes/bookRoute');
 const authRoutes = require('./bookRoutes/authRoute');
 app.use('/book', bookRoutes);
