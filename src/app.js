@@ -3,7 +3,7 @@ const app = express();
 app.use(express.json());
 const mongoose = require('mongoose');
 const joi = require('joi');
-
+const swaggerDocs = require('swaggerBooks.js');
   require('dotenv').config();
 
 const bookRoutes = require('./bookRoutes/bookRoute');
@@ -21,22 +21,6 @@ app.use('/auth', authRoutes);
 const swaggerUI = require('swagger-ui-express');
 const swaggerjsDoc = require('swagger-jsdoc');
 
-const options = {
-    definition: {
-        openapi: '3.0.0',
-        info: {
-            title: 'Book Buzz API',
-            version: '1.0.0',
-            description: 'A simple Express API for managing books',
-        },
-        servers: [
-            {
-                url: 'http://localhost:3001',
-            },
-        ],
-    },
-    apis: ['./bookRoutes/*.js'],
-};
 
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerjsDoc(options)));
 
