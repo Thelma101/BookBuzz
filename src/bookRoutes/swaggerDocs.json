@@ -16,6 +16,13 @@
   "produces": [
     "application/json"
   ],
+  "securitySchemes": {
+    "jwt": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT"
+    }
+  },
   "paths": {
     "/register": {
       "post": {
@@ -30,7 +37,7 @@
                 "required": [
                   "email",
                   "password",
-                  "nane"
+                  "name"
                 ],
                 "properties": {
                   "email": {
@@ -70,49 +77,49 @@
           }
         }
       }
-    }
-  },
-  "/login": {
-    "post": {
-      "summary": "Login to an existing user account",
-      "description": "Authenticate a user and return a JSON Web Token",
-      "requestBody": {
-        "description": "User login credentials",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "required": [
-                "email",
-                "password"
-              ],
-              "properties": {
-                "email": {
-                  "type": "string",
-                  "format": "email"
-                },
-                "password": {
-                  "type": "string",
-                  "format": "password"
-                }
-              }
-            }
+    },
+    "/login": {
+      "post": {
+        "summary": "Login to an existing user account",
+        "description": "Authenticate a user and return a JSON Web Token",
+        "security": [
+          {
+            "jwt": []
           }
-        }
-      },
-      "responses": {
-        "200": {
-          "description": "User logged in successfully",
+        ],
+        "requestBody": {
+          "description": "User login credentials",
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
+                "required": [
+                  "email",
+                  "password"
+                ],
                 "properties": {
-                  "token": {
+                  "email": {
                     "type": "string"
                   },
-                  "expiresIn": {
-                    "type": "integer"
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User logged in successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
                   }
                 }
               }
