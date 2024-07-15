@@ -28,14 +28,11 @@
               "schema": {
                 "type": "object",
                 "required": [
-                  "username",
                   "email",
-                  "password"
+                  "password",
+                  "nane"
                 ],
                 "properties": {
-                  "username": {
-                    "type": "string"
-                  },
                   "email": {
                     "type": "string",
                     "format": "email"
@@ -43,6 +40,9 @@
                   "password": {
                     "type": "string",
                     "format": "password"
+                  },
+                  "name": {
+                    "type": "string"
                   }
                 }
               }
