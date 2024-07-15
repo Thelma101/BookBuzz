@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "My API",
-    "description": "API for my application",
+    "title": "Book Buzz Library",
+    "description": "Book Buzz API",
     "version": "1.0.0"
   },
   "host": "localhost:3000",
