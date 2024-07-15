@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
-// const books = require('../model/booksData.json');
-const books = require('../model/user.model')
+const books = require('../model/booksData.json');
+// const books = require('../model/user.model');
 const Joi = require('joi');
 const fs = require('fs');
 app.use(express.json());
@@ -41,6 +41,8 @@ const bookController = {
             const newBooks = [...books, newBook]; 
             res.status(201).json(newBook);
             // newBooks.save();
+            fs.writeFileSync('./model/booksData.json', JSON.stringify(newBooks, null, 2));
+
         } catch (error) {
             console.error(error.message);
             res.status(500).json({ error: 'Error creating book' });
