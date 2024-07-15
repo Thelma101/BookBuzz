@@ -8,7 +8,7 @@ app.use(express.json());
 const bookController = {
     async getAllBooks(req, res) {
         try {
-            res.json([...books]); // Create a copy of the books array
+            res.json([...books]);
         } catch (error) {
             console.error(error.message);
             res.status(500).json({ error: 'Error fetching books' });
