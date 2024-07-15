@@ -13,6 +13,7 @@ const register = async (req, res) => {
     const newUser = await user.create({ email, password, name });
     await newUser.save();
     // res.status(201).json(newUser);
+    
     res.status(200).json({
       status: 'Success',
       message: 'Registration Succussful',
