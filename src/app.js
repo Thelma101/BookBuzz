@@ -8,8 +8,9 @@ const swaggerDocs = require('./bookRoutes/swaggerDocs.json');
 
 const bookRoutes = require('./bookRoutes/bookRoute');
 const authRoutes = require('./bookRoutes/authRoute');
-app.use('/book', bookRoutes);
-app.use('/auth', authRoutes);
+
+app.use('/', bookRoutes);
+app.use('/', authRoutes);
 
 // Database
  mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`)

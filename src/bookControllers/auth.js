@@ -24,10 +24,11 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await user.findOne({ email });
+    const userLogin = await user.findOne({ email });
 
-    if (!user || !(await user.comparePassword(password))) {
-      return res.status(401).json({ error: 'Invalid email or password' });
+    // if (!userLogin || !(await user.comparePassword(password))) {
+    if (!userLogin) {
+      return res.status(401).json({ error: 'Invalid email' });
     }
 
   } catch (error) {

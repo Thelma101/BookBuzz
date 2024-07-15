@@ -17,7 +17,7 @@
     "application/json"
   ],
   "paths": {
-    "auth/register": {
+    "/register": {
       "post": {
         "summary": "Register a new user",
         "description": "Create a new user account",
