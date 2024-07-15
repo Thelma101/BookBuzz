@@ -11,6 +11,7 @@ const register = async (req, res) => {
   try {
     const { email, password, name } = req.body;
     const newUser = await user.create({ email, password, name });
+    await newUser.save();
     // res.status(201).json(newUser);
     res.status(200).json({
       status: 'Success',
@@ -39,6 +40,10 @@ const login = async (req, res) => {
     if (!userPassword) {
       return res.status(401).json({ error: 'Invalid password' });
     }
+    res.json({
+      status: 'Success',
+      message: 'Login Successful'
+    })
 
   } catch (error) {
     console.error(error);
