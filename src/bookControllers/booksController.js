@@ -3,7 +3,6 @@ const app = express();
 // const books = require('../model/booksData.json');
 const books = require('../model/user.model');
 const Joi = require('joi');
-const fs = require('fs');
 app.use(express.json());
 
 const bookController = {
@@ -18,35 +17,31 @@ const bookController = {
 
     async createBook(req, res) {
         const bookSchema = Joi.object({
-            title: Joi.string().required(),
-            author: Joi.string().required(),
-            genre: Joi.string().required(),
-            published: Joi.date().required(),
-            description: Joi.string().required(),
-            ratings_count: Joi.number().required(),
-            reviews_count: Joi.number().required()
+          title: Joi.string().required(),
+          author: Joi.string().required(),
+          genre: Joi.string().required(),
+          published: Joi.date().required(),
+          description: Joi.string().required(),
+          ratingsCount: Joi.number().required(),
+          reviewsCount: Joi.number().required(),
         });
-
+      
         try {
-            const { error } = bookSchema.validate(req.body);
-            if (error) {
-                res.status(400).json({ error: 'Invalid request data' });
-                return;
-            }
-
-            const newBook = {
-                id: books.length + 1,   
-                ...req.body
-            };
-            const newBooks = [...books, newBook]; 
-            res.status(201).json(newBook);
-            // newBooks.save();
-            // fs.writeFileSync('./model/booksData.json', JSON.stringify(newBooks, null, 2));
+          const { error } = bookSchema.validate(req.body);
+          if (error) {
+            res.status(400).json({ error: 'Invalid request data' });
+            res.send();
+            return;
+          }
+      
+          const book = new Book(req.body);
+          await book.save();
+          res.status(201).json(book);
         } catch (error) {
-            console.error(error.message);
-            res.status(500).json({ error: 'Error creating book' });
+          console.error(error.message);
+          res.status(500).json({ error: 'Error creating book' });
         }
-    },
+      },
 
     async getBookById(req, res) {
         try {
