@@ -1,6 +1,7 @@
 
 const express = require('express');
 const app = express();
+const bcrypt = require('bcrypt');
 
 // const user = require('../model/booksData.json')
 const user = require('../model/user.model');
@@ -11,11 +12,11 @@ const register = async (req, res) => {
     const { email, password, name } = req.body;
     const newUser = await user.create({ email, password, name });
     // res.status(201).json(newUser);
-    res.status(200).json({ 
+    res.status(200).json({
       status: 'Success',
       message: 'Registration Succussful',
       details: { id: newUser._id, name, email }
-      });
+    });
   } catch (error) {
     console.error(error);
   }
@@ -26,9 +27,17 @@ const login = async (req, res) => {
     const { email, password } = req.body;
     const userLogin = await user.findOne({ email });
 
-    // if (!userLogin || !(await user.comparePassword(password))) {
     if (!userLogin) {
       return res.status(401).json({ error: 'Invalid email' });
+    }
+    // const userPassword = await bcrypt.compare(password, userLogin.password);
+    // if (!userPassword) {
+    //   return res.status(401).json({ error: 'Invalid password' });
+    // }
+
+    const userPassword = ((password) === (userLogin.password));
+    if (!userPassword) {
+      return res.status(401).json({ error: 'Invalid password' });
     }
 
   } catch (error) {
