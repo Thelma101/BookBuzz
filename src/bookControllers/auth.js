@@ -3,27 +3,53 @@ const app = express();
 const bcrypt = require('bcrypt');
 const { User } = require('../model/user.model');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 const register = async (req, res) => {
   try {
     const { email, password, name } = req.body;
+
+    // Validate request
+    if (!email || !password || !name) {
+      return res.status(400).json({ error: 'All fields are required' });
+    }
+
+    // Check if the user already exists
+    const existingUser = await User.findOne({ email: email.toLowerCase() });
+    if (existingUser) {
+      return res.status(400).json({ error: 'Email already exists' });
+    }
+
+    // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new User({ email, password: hashedPassword, name });
+
+    // Log the hashed password
+    console.log(`Hashed password: ${hashedPassword}`);
+
+    // Create a new user
+    const newUser = new User({ email: email.toLowerCase(), password: hashedPassword, name });
     await newUser.save();
+
     res.status(200).json({
       status: 'Success',
       message: 'Registration Successful',
-      details: { id: newUser._id, name, email }
+      details: { id: newUser._id, name, email: newUser.email }
     });
   } catch (error) {
-    console.error(error);
+    console.error('Error during registration:', error);
+    res.status(500).json({ error: 'Internal server error' });
   }
 };
 
 const login = async (req, res) => {
   const { email, password } = req.body;
   try {
-    console.log(`Login attempt with email: ${email} and password: ${password}`);
+    console.log(`Login attempt with email: ${email}`);
+
+    // Validate request
+    if (!email || !password) {
+      return res.status(400).json({ error: 'All fields are required' });
+    }
 
     const user = await User.findOne({ email: email.toLowerCase() });
 
@@ -33,6 +59,7 @@ const login = async (req, res) => {
     }
 
     console.log(`User found: ${user.email}`);
+    console.log(`Stored hashed password: ${user.password}`);
 
     const isMatch = await bcrypt.compare(password, user.password);
 
@@ -46,10 +73,10 @@ const login = async (req, res) => {
       expiresIn: '1h'
     });
 
-    res.json({ token, user });
+    res.json({ token, user: { id: user._id, email: user.email, name: user.name } });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error('Error during login:', error);
+    res.status(500).json({ error: 'Internal server error' });
   }
 };
 
@@ -57,10 +84,30 @@ const updateUser = async (req, res) => {
   try {
     const { id } = req.params;
     const { name, email, password } = req.body;
-    const user = await User.findByIdAndUpdate(id, { name, email, password }, { new: true });
-    res.status(200).json(user);
+
+    // Validate request
+    if (!id || (!name && !email && !password)) {
+      return res.status(400).json({ error: 'Invalid request' });
+    }
+
+    let updateData = { name, email: email ? email.toLowerCase() : undefined };
+    if (password) {
+      updateData.password = await bcrypt.hash(password, 10);
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(id, updateData, { new: true });
+
+    if (!updatedUser) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    res.status(200).json({
+      status: 'Success',
+      message: 'User updated successfully',
+      details: updatedUser
+    });
   } catch (error) {
-    console.error(error);
+    console.error('Error during update:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
@@ -68,10 +115,18 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
   try {
     const { id } = req.params;
-    await User.findByIdAndDelete(id);
-    res.status(204).json();
+    const deletedUser = await User.findByIdAndDelete(id);
+
+    if (!deletedUser) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    res.status(200).json({
+      status: 'Success',
+      message: 'User deleted successfully'
+    });
   } catch (error) {
-    console.error(error);
+    console.error('Error during delete:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
