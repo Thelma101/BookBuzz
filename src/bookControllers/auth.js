@@ -1,21 +1,19 @@
-
 const express = require('express');
 const app = express();
 const bcrypt = require('bcrypt');
 // const user = require('../model/booksData.json')
-const user = require('../model/user.model');
-// const { joi } = require('joi')
+const { User } = require('../model/user.model');
+
 
 const register = async (req, res) => {
   try {
     const { email, password, name } = req.body;
-    const newUser = await user.create({ email, password, name });
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = new User({ email, password: hashedPassword, name });
     await newUser.save();
-    // res.status(201).json(newUser);
-    
     res.status(200).json({
       status: 'Success',
-      message: 'Registration Succussful',
+      message: 'Registration Successful',
       details: { id: newUser._id, name, email }
     });
   } catch (error) {
@@ -24,31 +22,28 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
+  const { email, password } = req.body;
   try {
-    const { email, password } = req.body;
-    const userLogin = await user.findOne({ email });
+    const user = await User.findOne({ email });
 
-    if (!userLogin) {
-      return res.status(401).json({ error: 'Invalid email' });
+    if (!user) {
+      return res.status(401).json({ error: 'Invalid email or password' });
     }
-    // const userPassword = await bcrypt.compare(password, userLogin.password);
-    // if (!userPassword) {
-    //   return res.status(401).json({ error: 'Invalid password' });
-    // }
-
-    const userPassword = ((password) === (userLogin.password));
-    if (!userPassword) {
-      return res.status(401).json({ error: 'Invalid password' });
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(401).json({ error: 'Invalid email or password' });
     }
-    res.json({
-      status: 'Success',
-      message: 'Login Successful'
-    })
 
+    // // Generate a JSON Web Token (JWT) for the user
+    // const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, {
+    //   expiresIn: '1h'
+    // });  
+    res.json({ token, user });
   } catch (error) {
     console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
-};
+});
 
 const updateUser = async (req, res) => {
   try {
@@ -74,7 +69,6 @@ const deleteUser = async (req, res) => {
 };
 
 module.exports = { register, login, updateUser, deleteUser };
-
 
 
 // compare old file with new
