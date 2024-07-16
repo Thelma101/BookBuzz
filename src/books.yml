@@ -1,6 +1,6 @@
 swagger: "2.0"
 info:
-  title: My API
+  title: My BookBuzz API
   description: Book Buzz API
   version: 1.0.0
 host: localhost:3001
