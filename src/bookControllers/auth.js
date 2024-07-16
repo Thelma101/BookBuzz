@@ -24,26 +24,35 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const user = await User.findOne({ email });
+    console.log(`Login attempt with email: ${email} and password: ${password}`);
+
+    const user = await User.findOne({ email: email.toLowerCase() });
 
     if (!user) {
-      return res.status(401).json({ error: 'Invalid email or password' });
-    }
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
+      console.log(`User not found with email: ${email}`);
       return res.status(401).json({ error: 'Invalid email or password' });
     }
 
-    // // Generate a JSON Web Token (JWT) for the user
-    // const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, {
-    //   expiresIn: '1h'
-    // });  
+    console.log(`User found: ${user.email}`);
+
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
+      console.log(`Password mismatch for user: ${user.email}`);
+      return res.status(401).json({ error: 'Invalid email or password' });
+    }
+
+    // Generate a JSON Web Token (JWT) for the user
+    const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, {
+      expiresIn: '1h'
+    });
+
     res.json({ token, user });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
-});
+};
 
 const updateUser = async (req, res) => {
   try {
