@@ -3,6 +3,7 @@ const app = express();
 const bcrypt = require('bcrypt');
 // const user = require('../model/booksData.json')
 const { User } = require('../model/user.model');
+const jwt = require('jsonwebtoken');
 
 
 const register = async (req, res) => {
