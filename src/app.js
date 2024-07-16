@@ -1,12 +1,11 @@
 const express = require('express');
-const app = express();
-app.use(express.json());
 const mongoose = require('mongoose');
-const joi = require('joi');
 const swaggerDocs = require('./bookRoutes/swaggerDocs.json');
 const swaggerUI = require('swagger-ui-express');
-  require('dotenv').config();
+require('dotenv').config();
 
+const app = express();
+app.use(express.json());
 
   //   Swagger
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
@@ -21,10 +20,10 @@ app.use('/', authRoutes);
 // Database
  mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`)
       .then(() => console.log('Connected to MongoDB'))
-      .catch(err => console.error(err));
+      .catch(err => console.error('Failed to connect to MongoDB', err));
 
 
-port = 3000;
+const port = process.env.PORT || 3000;;
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
