@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
-const Book = require('../model/user.model');
+const mongoose = require('mongoose');
+const book = require('../model/user.model');
 const Joi = require('joi');
 app.use(express.json());
 
@@ -16,15 +17,15 @@ const bookController = {
         }
     },
 
-    async createBook(req, res) {
+    async createbook(req, res) {
         const bookSchema = Joi.object({
             title: Joi.string().required(),
             author: Joi.string().required(),
             genre: Joi.string().required(),
             published: Joi.date().required(),
             description: Joi.string().required(),
-            ratingsCount: Joi.number().required(),
-            reviewsCount: Joi.number().required(),
+            ratings_count: Joi.number().required(),
+            reviews_count: Joi.number().required(),
         });
 
         try {
@@ -34,7 +35,7 @@ const bookController = {
                 return;
             }
 
-            const newBook = await Book.create(value);
+            const newBook = await book.create(value);
             res.status(201).json(newBook);
         } catch (error) {
             console.error(error.message);
@@ -45,7 +46,7 @@ const bookController = {
     async getBookById(req, res) {
         try {
             const id = req.params.id;
-            const book = await Book.findById(id);
+            const book = await book.findById(id);
             if (!book) {
                 res.status(404).json({ error: 'Book not found' });
             } else {
@@ -76,7 +77,7 @@ const bookController = {
             }
 
             const id = req.params.id;
-            const updatedBook = await Book.findByIdAndUpdate(id, value, { new: true });
+            const updatedBook = await book.findByIdAndUpdate(id, value, { new: true });
             if (!updatedBook) {
                 res.status(404).json({ error: 'Book not found' });
             } else {
@@ -91,7 +92,7 @@ const bookController = {
     async deleteBook(req, res) {
         try {
             const id = req.params.id;
-            const deletedBook = await Book.findByIdAndDelete(id);
+            const deletedBook = await book.findByIdAndDelete(id);
             if (!deletedBook) {
                 res.status(404).json({ error: 'Book not found' });
             } else {

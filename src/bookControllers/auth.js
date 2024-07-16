@@ -2,7 +2,6 @@
 const express = require('express');
 const app = express();
 const bcrypt = require('bcrypt');
-
 // const user = require('../model/booksData.json')
 const user = require('../model/user.model');
 // const { joi } = require('joi')
