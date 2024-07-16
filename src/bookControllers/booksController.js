@@ -1,14 +1,15 @@
 const express = require('express');
 const app = express();
-// const books = require('../model/booksData.json');
-const books = require('../model/user.model');
+const Book = require('../model/user.model');
 const Joi = require('joi');
 app.use(express.json());
+
 
 const bookController = {
     async getAllBooks(req, res) {
         try {
-            res.json([...books]);
+            const books = await Book.find();
+            res.json(books);
         } catch (error) {
             console.error(error.message);
             res.status(500).json({ error: 'Error fetching books' });
@@ -17,40 +18,38 @@ const bookController = {
 
     async createBook(req, res) {
         const bookSchema = Joi.object({
-          title: Joi.string().required(),
-          author: Joi.string().required(),
-          genre: Joi.string().required(),
-          published: Joi.date().required(),
-          description: Joi.string().required(),
-          ratingsCount: Joi.number().required(),
-          reviewsCount: Joi.number().required(),
+            title: Joi.string().required(),
+            author: Joi.string().required(),
+            genre: Joi.string().required(),
+            published: Joi.date().required(),
+            description: Joi.string().required(),
+            ratingsCount: Joi.number().required(),
+            reviewsCount: Joi.number().required(),
         });
-      
+
         try {
-          const { error } = bookSchema.validate(req.body);
-          if (error) {
-            res.status(400).json({ error: 'Invalid request data' });
-            res.send();
-            return;
-          }
-      
-          const book = new Book(req.body);
-          await book.save();
-          res.status(201).json(book);
+            const { error, value } = bookSchema.validate(req.body);
+            if (error) {
+                res.status(400).json({ error: 'Invalid request data' });
+                return;
+            }
+
+            const newBook = await Book.create(value);
+            res.status(201).json(newBook);
         } catch (error) {
-          console.error(error.message);
-          res.status(500).json({ error: 'Error creating book' });
+            console.error(error.message);
+            res.status(500).json({ error: 'Error creating book' });
         }
-      },
+    },
 
     async getBookById(req, res) {
         try {
-            const id = parseInt(req.params.id);
-            const book = books.find((book) => book.id === id);
+            const id = req.params.id;
+            const book = await Book.findById(id);
             if (!book) {
                 res.status(404).json({ error: 'Book not found' });
             } else {
-                res.json({ ...book }); // Create a copy of the book object
+                res.json(book);
             }
         } catch (error) {
             console.error(error.message);
@@ -70,18 +69,17 @@ const bookController = {
         });
 
         try {
-            const { error } = bookSchema.validate(req.body);
+            const { error, value } = bookSchema.validate(req.body);
             if (error) {
                 res.status(400).json({ error: 'Invalid request data' });
                 return;
             }
 
-            const id = parseInt(req.params.id);
-            const book = books.find((book) => book.id === id);
-            if (!book) {
+            const id = req.params.id;
+            const updatedBook = await Book.findByIdAndUpdate(id, value, { new: true });
+            if (!updatedBook) {
                 res.status(404).json({ error: 'Book not found' });
             } else {
-                const updatedBook = { ...book, ...req.body }; // Create a copy of the book object
                 res.json(updatedBook);
             }
         } catch (error) {
@@ -92,13 +90,11 @@ const bookController = {
 
     async deleteBook(req, res) {
         try {
-            const id = parseInt(req.params.id);
-            const index = books.findIndex((book) => book.id === id);
-            if (index === -1) {
+            const id = req.params.id;
+            const deletedBook = await Book.findByIdAndDelete(id);
+            if (!deletedBook) {
                 res.status(404).json({ error: 'Book not found' });
             } else {
-                const newBooks = [...books]; // Create a copy of the books array
-                newBooks.splice(index, 1);
                 res.json({ message: 'Book deleted successfully' });
             }
         } catch (error) {

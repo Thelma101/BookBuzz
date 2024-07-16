@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 
 // const user = require('../model/booksData.json')
 const user = require('../model/user.model');
-const { joi } = require('joi')
+// const { joi } = require('joi')
 
 const register = async (req, res) => {
   try {

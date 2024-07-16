@@ -11,15 +11,12 @@ const bookSchema = new mongoose.Schema({
   author: { type: String, required: true },
   genre: { type: String, required: true },
   published: { type: Date, required: true },
-  description: { type: String, required: true, maxlength: 500 },
+  description: { type: String, required: true, maxlength: 700 },
   ratingsCount: { type: Number, required: true, default: 0 },
-  reviewCount: { type: Number, required: true, default: 0 },
+  reviewsCount: { type: Number, required: true, default: 0 },
 });
 
 const User = mongoose.model('User', userSchema);
 const Book = mongoose.model('Book', bookSchema);
-
-
-// const userBook = mongoose.model('Book', bookSchema, 'User', userSchema);
 
 module.exports = { User, Book };
