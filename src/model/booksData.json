@@ -1,252 +1,272 @@
 [
   {
-    "id": 1,
     "title": "The Secret",
     "author": "Rhonda Byrne",
     "genre": "Self-Help",
-    "published": 2006,
-    "description": "A guide to the law of attraction and how to apply it to achieve success and happiness."
+    "published": "2006-01-01",
+    "description": "A guide to the law of attraction and how to apply it to achieve success and happiness.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 2,
     "title": "Think and Grow Rich",
     "author": "Napoleon Hill",
     "genre": "Self-Help",
-    "published": 1937,
-    "description": "A classic book on the law of attraction and how to cultivate a wealth mindset."
+    "published": "1937-01-01",
+    "description": "A classic book on the law of attraction and how to cultivate a wealth mindset.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 3,
     "title": "The Power of Your Subconscious Mind",
     "author": "Joseph Murphy",
     "genre": "Self-Help",
-    "published": 1963,
-    "description": "A guide to the law of the mind and how to harness its power to achieve success and happiness."
+    "published": "1963-01-01",
+    "description": "A guide to the law of the mind and how to harness its power to achieve success and happiness.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 4,
     "title": "Mindset: The New Psychology of Success",
     "author": "Carol S. Dweck",
     "genre": "Self-Help",
-    "published": 2006,
-    "description": "A book on the growth mindset and how it can be applied to achieve success in various areas of life."
+    "published": "2006-01-01",
+    "description": "A book on the growth mindset and how it can be applied to achieve success in various areas of life.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 5,
     "title": "The 7 Habits of Highly Effective People",
     "author": "Stephen Covey",
     "genre": "Self-Help",
-    "published": 1989,
-    "description": "A guide to personal development and effectiveness, with a focus on habits and mindset."
+    "published": "1989-01-01",
+    "description": "A guide to personal development and effectiveness, with a focus on habits and mindset.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 6,
     "title": "The Millionaire Mind",
     "author": "T. Harv Eker",
     "genre": "Self-Help",
-    "published": 2005,
-    "description": "A book on the mindset and habits of wealthy people, and how to apply them to achieve financial success."
+    "published": "2005-01-01",
+    "description": "A book on the mindset and habits of wealthy people, and how to apply them to achieve financial success.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 7,
     "title": "The Automatic Millionaire",
     "author": "David Bach",
     "genre": "Personal Finance",
-    "published": 2003,
-    "description": "A guide to automating your finances and building wealth through smart financial decisions."
+    "published": "2003-01-01",
+    "description": "A guide to automating your finances and building wealth through smart financial decisions.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 8,
     "title": "Rich Dad Poor Dad",
     "author": "Robert Kiyosaki",
     "genre": "Personal Finance",
-    "published": 1997,
-    "description": "A book on financial literacy and wealth-building, with a focus on mindset and financial education."
+    "published": "1997-01-01",
+    "description": "A book on financial literacy and wealth-building, with a focus on mindset and financial education.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 9,
     "title": "The 4-Hour Work Week",
     "author": "Timothy Ferriss",
     "genre": "Self-Help",
-    "published": 2007,
-    "description": "A guide to lifestyle design and wealth creation, with a focus on passive income and freedom."
+    "published": "2007-01-01",
+    "description": "A guide to lifestyle design and wealth creation, with a focus on passive income and freedom.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 10,
     "title": "The Science of Getting Rich",
     "author": "Wallace D. Wattles",
     "genre": "Self-Help",
-    "published": 1910,
-    "description": "A classic book on the law of attraction and how to apply it to achieve wealth and success."
+    "published": "1910-01-01",
+    "description": "A classic book on the law of attraction and how to apply it to achieve wealth and success.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 11,
     "title": "As a Man Thinketh",
     "author": "James Allen",
     "genre": "Self-Help",
-    "published": 1902,
-    "description": "A classic book on the power of thought and how it shapes our reality."
+    "published": "1902-01-01",
+    "description": "A classic book on the power of thought and how it shapes our reality.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 12,
     "title": "The Power of Now",
     "author": "Eckhart Tolle",
     "genre": "Spirituality",
-    "published": 1997,
-    "description": "A spiritual guide to living in the present moment and finding inner peace."
+    "published": "1997-01-01",
+    "description": "A spiritual guide to living in the present moment and finding inner peace.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 13,
     "title": "The Alchemist",
     "author": "Paulo Coelho",
     "genre": "Fantasy",
-    "published": 1988,
-    "description": "A fable about following one's dreams and listening to one's heart."
+    "published": "1988-01-01",
+    "description": "A fable about following one's dreams and listening to one's heart.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 14,
     "title": "The 5 AM Club",
     "author": "Robin Sharma",
     "genre": "Self-Help",
-    "published": 2018,
-    "description": "A guide to waking up early and using the first few hours of the day to achieve success and happiness."
+    "published": "2018-01-01",
+    "description": "A guide to waking up early and using the first few hours of the day to achieve success and happiness.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 15,
     "title": "Essentialism: The Disciplined Pursuit of Less",
     "author": "Greg McKeown",
     "genre": "Self-Help",
-    "published": 2014,
-    "description": "A guide to prioritizing what is truly important and eliminating non-essential activities."
+    "published": "2014-01-01",
+    "description": "A guide to prioritizing what is truly important and eliminating non-essential activities.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 16,
     "title": "The One Thing",
     "author": "Gary Keller and Jay Papasan",
     "genre": "Self-Help",
-    "published": 2013,
-    "description": "A guide to achieving more by focusing on the most important thing first."
+    "published": "2013-01-01",
+    "description": "A guide to achieving more by focusing on the most important thing first.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 17,
     "title": "Deep Work",
     "author": "Cal Newport",
     "genre": "Self-Help",
-    "published": 2016,
-    "description": "A guide to cultivating the ability to focus without distraction and achieve more in less time."
+    "published": "2016-01-01",
+    "description": "A guide to cultivating the ability to focus without distraction and achieve more in less time.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 18,
     "title": "The 10X Rule",
     "author": "Grant Cardone",
     "genre": "Self-Help",
-    "published": 2011,
-    "description": "A guide to setting and achieving big goals, and taking massive action to achieve success."
+    "published": "2011-01-01",
+    "description": "A guide to setting and achieving big goals, and taking massive action to achieve success.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 19,
     "title": "Crush It!",
     "author": "Gary Vaynerchuk",
     "genre": "Self-Help",
-    "published": 2009,
-    "description": "A guide to building a successful career and business by leveraging social media and online marketing."
+    "published": "2009-01-01",
+    "description": "A guide to building a successful career and business by leveraging social media and online marketing.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 20,
     "title": "The Miracle Morning",
     "author": "Hal Elrod",
     "genre": "Self-Help",
-    "published": 2012,
-    "description": "A guide to creating a morning routine that sets you up for success and helps you achieve your goals."
+    "published": "2012-01-01",
+    "description": "A guide to creating a morning routine that sets you up for success and helps you achieve your goals.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 21,
     "title": "The Nightingale",
     "author": "Kristin Hannah",
     "genre": "Historical Fiction",
-    "published": 2015,
-    "description": "A novel set in France during World War II, exploring the themes of love, loss, and survival."
+    "published": "2015-01-01",
+    "description": "A novel set in France during World War II, exploring the themes of love, loss, and survival.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 22,
-    "title": "The 5 AM Club",
-    "author": "Robin Sharma",
-    "genre": "Self-Help",
-    "published": 2018,
-    "description": "A guide to waking up early and using the first few hours of the day to achieve personal and professional success."
-  },
-  {
-    "id": 23,
     "title": "The Three-Body Problem",
     "author": "Liu Cixin",
     "genre": "Science Fiction",
-    "published": 2008,
-    "description": "A novel that explores the first contact between humans and an alien civilization, and the consequences that follow."
+    "published": "2008-01-01",
+    "description": "A novel that explores the first contact between humans and an alien civilization, and the consequences that follow.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 24,
     "title": "The Devil in the White City",
     "author": "Erik Larson",
     "genre": "Non-Fiction",
-    "published": 2003,
-    "description": "A historical book that tells the story of the 1893 World's Fair in Chicago and the serial killer H.H. Holmes."
+    "published": "2003-01-01",
+    "description": "A historical book that tells the story of the 1893 World's Fair in Chicago and the serial killer H.H. Holmes.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 25,
     "title": "The Song of Achilles",
     "author": "Madeline Miller",
     "genre": "Fantasy",
-    "published": 2011,
-    "description": "A novel that reimagines the Trojan War from the perspective of Achilles' lover, Patroclus."
+    "published": "2011-01-01",
+    "description": "A novel that reimagines the Trojan War from the perspective of Achilles' lover, Patroclus.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 26,
     "title": "The Power of Vulnerability",
     "author": "Teal Swan",
     "genre": "Self-Help",
-    "published": 2018,
-    "description": "A guide to embracing vulnerability and using it as a tool for personal growth and transformation."
+    "published": "2018-01-01",
+    "description": "A guide to embracing vulnerability and using it as a tool for personal growth and transformation.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 27,
     "title": "The City & The City",
     "author": "China Miéville",
     "genre": "Fantasy",
-    "published": 2009,
-    "description": "A police procedural novel set in a world where two cities coexist in the same space, and citizens are trained to 'unsee' the other city."
+    "published": "2009-01-01",
+    "description": "A police procedural novel set in a world where two cities coexist in the same space, and citizens are trained to 'unsee' the other city.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 28,
     "title": "The Immortal Life of Henrietta Lacks",
     "author": "Rebecca Skloot",
     "genre": "Non-Fiction",
-    "published": 2010,
-    "description": "A book that tells the story of Henrietta Lacks, a poor black tobacco farmer whose cancer cells were taken without her knowledge and led to numerous scientific breakthroughs."
+    "published": "2010-01-01",
+    "description": "A book that tells the story of Henrietta Lacks, a poor black tobacco farmer whose cancer cells were taken without her knowledge and led to numerous scientific breakthroughs.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 29,
     "title": "The First Fifteen Lives of Harry August",
     "author": "Claire North",
     "genre": "Science Fiction",
-    "published": 2014,
-    "description": "A novel about a man who is reborn every time he dies, and must navigate a complex web of time travel and cause and effect."
+    "published": "2014-01-01",
+    "description": "A novel about a man who is reborn every time he dies, and must navigate a complex web of time travel and cause and effect.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 30,
     "title": "The House of Shattered Wings",
     "author": "Aliette de Bodard",
     "genre": "Dark Fantasy",
-    "published": 2015,
-    "description": "A novel set in a post-apocalyptic Paris, where fallen angels and rival houses fight for power and survival."
+    "published": "2015-01-01",
+    "description": "A novel set in a post-apocalyptic Paris, where fallen angels and rival houses fight for power and survival.",
+    "ratingsCount": 4800,
+    "reviewsCount": 900
   },
   {
-    "id": 31,
     "title": "Bared to You",
     "author": "Sylvia Day",
     "genre": "Romance, Erotica",
     "published": "2012-04-03",
     "description": "A romantic and erotic novel about two people who engage in a passionate and intense relationship.",
-    "ratings_count": 200,
-    "reviews_count": 100
+    "ratingsCount": 200,
+    "reviewsCount": 100
   }
 ]
