@@ -46,11 +46,11 @@
           "description": {
             "type": "string"
           },
-          "ratingsCount":{
-            "type":"integer"
+          "ratingsCount": {
+            "type": "integer"
           },
-          "reviewsCount":{
-            "type":"integer"
+          "reviewsCount": {
+            "type": "integer"
           }
         }
       }
@@ -293,6 +293,12 @@
                   },
                   "description": {
                     "type": "string"
+                  },
+                  "ratingsCount": {
+                    "type": "integer"
+                  },
+                  "reviewsCount": {
+                    "type": "integer"
                   }
                 }
               }

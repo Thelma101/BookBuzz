@@ -7,7 +7,7 @@ require('dotenv').config();
 const app = express();
 app.use(express.json());
 
-  //   Swagger
+  //  Swagger
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
   // Routes
