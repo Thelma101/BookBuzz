@@ -28,4 +28,4 @@ app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
 
-// check on .env
+// check o .env
