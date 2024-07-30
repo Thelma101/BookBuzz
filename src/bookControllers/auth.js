@@ -33,7 +33,7 @@ const register = async (req, res) => {
       message: 'Registration Successful',
       details: { id: newUser._id, name, email: newUser.email }
     });
-    // Catch
+    // Catch error
   } catch (error) {
     console.error('Error during registration:', error);
     res.status(500).json({ error: 'Internal server error' });
